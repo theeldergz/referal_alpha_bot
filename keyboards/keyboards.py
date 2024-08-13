@@ -12,6 +12,9 @@ def welcome_kb() -> ReplyKeyboardMarkup:
 
 
 def welcome_yes_no_kb() -> InlineKeyboardMarkup:
+    """
+    Клавиатура отвечает за первый приветственный блок
+    """
     kb = InlineKeyboardBuilder()
     kb.row(types.InlineKeyboardButton(
         text='Да', callback_data='yes')
@@ -24,37 +27,88 @@ def welcome_yes_no_kb() -> InlineKeyboardMarkup:
     return kb.as_markup()
 
 
-def unit_1_kb() -> InlineKeyboardMarkup:
+def advantage_1_kb() -> InlineKeyboardMarkup:
+    """
+    Клавиатура отвечает за первое преимущество - "официальный доход"
+    """
     kb = InlineKeyboardBuilder()
     kb.row(types.InlineKeyboardButton(
-        text='Понятно', callback_data='unit_1_accept')
+        text='Понятно', callback_data='advantage_1_accept')
     )
     kb.row(types.InlineKeyboardButton(
-        text='Подробнее', callback_data='unit_1_details')
+        text='Подробнее', callback_data='advantage_1_details')
     )
     kb.adjust(2)
 
     return kb.as_markup()
 
 
-def unit_1_continue_kb() -> InlineKeyboardMarkup:
+def advantage_1_continue_kb() -> InlineKeyboardMarkup:
+    """
+    Клавиатура отвечает за переход к следующему "преимуществу"
+    """
     kb = InlineKeyboardBuilder()
     kb.row(types.InlineKeyboardButton(
-        text='Продолжить', callback_data='unit_1_continue')
+        text='Продолжить', callback_data='advantage_1_continue')
     )
     kb.adjust(1)
 
     return kb.as_markup()
 
 
-def unit_2_accept_kb() -> InlineKeyboardMarkup:
+def advantage_2_kb() -> InlineKeyboardMarkup:
+    """
+    Клавиатура отвечает за второе преимущество - "Доход без вложений"
+    """
     kb = InlineKeyboardBuilder()
     kb.row(types.InlineKeyboardButton(
-        text='Понятно', callback_data='unit_2_accept')
+        text='Понятно', callback_data='advantage_2_accept')
     )
     kb.row(types.InlineKeyboardButton(
-        text='Подробнее', callback_data='unit_2_details')
+        text='Подробнее', callback_data='advantage_2_details')
     )
     kb.adjust(2)
+
+    return kb.as_markup()
+
+
+def advantage_2_continue_kb() -> InlineKeyboardMarkup:
+    """
+    Клавиатура отвечает за переход к следующему "преимуществу"
+    """
+    kb = InlineKeyboardBuilder()
+    kb.row(types.InlineKeyboardButton(
+        text='Продолжить', callback_data='advantage_2_continue')
+    )
+    kb.adjust(1)
+
+    return kb.as_markup()
+
+
+def advantage_3_kb() -> InlineKeyboardMarkup:
+    """
+    Клавиатура отвечает за третье преимущество - "Сотрудничество с крупным российским банком"
+    """
+    kb = InlineKeyboardBuilder()
+    kb.row(types.InlineKeyboardButton(
+        text='Понятно', callback_data='advantage_3_accept')
+    )
+    kb.row(types.InlineKeyboardButton(
+        text='Подробнее', callback_data='advantage_3_details')
+    )
+    kb.adjust(2)
+
+    return kb.as_markup()
+
+
+def advantage_3_continue_kb() -> InlineKeyboardMarkup:
+    """
+    Клавиатура отвечает за переход к следующему "преимуществу"
+    """
+    kb = InlineKeyboardBuilder()
+    kb.row(types.InlineKeyboardButton(
+        text='Продолжить', callback_data='advantage_3_continue')
+    )
+    kb.adjust(1)
 
     return kb.as_markup()
