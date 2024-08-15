@@ -3,10 +3,12 @@ from aiogram.types import FSInputFile, Message
 from aiogram.filters.command import Command
 
 from keyboards.keyboards import welcome_yes_no_kb, advantage_1_kb, advantage_1_continue_kb, advantage_2_kb, \
-    advantage_3_kb, advantage_2_continue_kb
+    advantage_3_kb, advantage_2_continue_kb, advantage_4_kb, advantage_4_continue_kb, advantage_3_continue_kb, \
+    advantage_5_kb
 
 from image_files.images_paths import path_to_welcome_img, path_to_advantage_2, path_to_advantage_1_my_profile, \
-    path_to_advantage_1_accept, path_to_advantage_3, path_to_advantage_2_details
+    path_to_advantage_1_accept, path_to_advantage_3, path_to_advantage_2_details, path_to_advantage_3_details, \
+    path_to_advantage_4
 
 router = Router()
 
@@ -110,15 +112,41 @@ async def advantage_2_details_handler(callback_query: types.CallbackQuery) -> No
 
 @router.callback_query(lambda c: c.data == 'advantage_3_accept' or c.data == 'advantage_3_continue')
 async def advantage_3_accept_handler(callback_query: types.CallbackQuery) -> None:
-    photo = FSInputFile(path_to_advantage_3)
+    photo = FSInputFile(path_to_advantage_4)
 
-    await callback_query.message.answer_photo(photo=photo, reply_markup=advantage_3_kb(), caption=''' ''')
+    await callback_query.message.answer_photo(photo=photo, reply_markup=advantage_4_kb(), caption='''Неограниченный 
+    доход. Проект предоставляет возможность получать почти неограниченный доход, что  сложно достичь просто работая 
+    по найму.''')
 
     await callback_query.answer()
 
 
 @router.callback_query(lambda c: c.data == 'advantage_3_details')
 async def advantage_3_details_handler(callback_query: types.CallbackQuery) -> None:
-    photo = FSInputFile(path_to_advantage_2_details)
+    photo = FSInputFile(path_to_advantage_3_details)
 
-    await callback_query.message.answer_photo(photo=photo, reply_markup=advantage_2_continue_kb(), caption=''' ''')
+    await callback_query.message.answer_photo(photo=photo, reply_markup=advantage_3_continue_kb(), caption='''Проект 
+    "Свой в Альфе" сотрудничает с  крупнейшим банком России занимающий 4-ое место по размеру активов: 8,79 триллионов 
+    рублей и это один из самых надежных банков. Банк победил в главных номинациях премии «Банки.ру» по итогам 2023 
+    года.  Год основания  20 декабря 1990  года. Вошел в топ-3 российских банков с лучшей репутацией. ''')
+
+
+@router.callback_query(lambda c: c.data == 'advantage_4_accept' or c.data == 'advantage_4_continue')
+async def advantage_4_accept_handler(callback_query: types.CallbackQuery) -> None:
+    photo = FSInputFile(path_to_advantage_4)
+
+    await callback_query.message.answer_photo(photo=photo, reply_markup=advantage_5_kb(), caption='''Неограниченный 
+    доход. Проект предоставляет возможность получать почти неограниченный доход, что  сложно достичь просто работая 
+    по найму.''')
+
+    await callback_query.answer()
+
+
+@router.callback_query(lambda c: c.data == 'advantage_4_details')
+async def advantage_4_details_handler(callback_query: types.CallbackQuery) -> None:
+    photo = FSInputFile(path_to_advantage_3_details)
+
+    await callback_query.message.answer_photo(photo=photo, reply_markup=advantage_4_continue_kb(), caption='''Проект 
+    "Свой в Альфе" сотрудничает с  крупнейшим банком России занимающий 4-ое место по размеру активов: 8,79 триллионов 
+    рублей и это один из самых надежных банков. Банк победил в главных номинациях премии «Банки.ру» по итогам 2023 
+    года.  Год основания  20 декабря 1990  года. Вошел в топ-3 российских банков с лучшей репутацией. ''')
