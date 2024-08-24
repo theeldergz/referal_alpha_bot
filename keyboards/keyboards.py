@@ -27,6 +27,71 @@ def welcome_yes_no_kb() -> InlineKeyboardMarkup:
     return kb.as_markup()
 
 
+def make_accept_details_kb(advantage_name: str) -> InlineKeyboardMarkup:
+    kb = InlineKeyboardBuilder()
+    kb.row(types.InlineKeyboardButton(
+        text='Понятно', callback_data=f'advantage_{advantage_name}_accept')
+    )
+    kb.row(types.InlineKeyboardButton(
+        text='Подробнее', callback_data=f'advantage_{advantage_name}_details')
+    )
+    kb.adjust(2)
+
+    return kb.as_markup()
+
+
+def make_continue_kb(next_advantage_name: str) -> InlineKeyboardMarkup:
+    """
+    Клавиатура отвечает за переход к следующему "преимуществу"
+    """
+    kb = InlineKeyboardBuilder()
+    kb.row(types.InlineKeyboardButton(
+        text='Продолжить', callback_data=f'advantage_{next_advantage_name}_continue')
+    )
+    kb.adjust(1)
+
+    return kb.as_markup()
+
+
+def make_hook_10k_want_later_kb() -> InlineKeyboardMarkup:
+    """
+    Клавиатура отвечает за кнопки "хочу" и "позже" в модуле о быстром заработке 10к
+    """
+    kb = InlineKeyboardBuilder()
+    kb.row(types.InlineKeyboardButton(
+        text='Хочу', callback_data=f'hook_10k_want')
+    )
+    kb.row(types.InlineKeyboardButton(
+        text='Позже', callback_data=f'hook_10k_later')
+    )
+    kb.adjust(2)
+
+    return kb.as_markup()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def advantage_1_kb() -> InlineKeyboardMarkup:
     """
     Клавиатура отвечает за первое преимущество - "официальный доход"

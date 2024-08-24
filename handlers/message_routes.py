@@ -6,9 +6,9 @@ from keyboards.keyboards import welcome_yes_no_kb, advantage_1_kb, advantage_1_c
     advantage_3_kb, advantage_2_continue_kb, advantage_4_kb, advantage_4_continue_kb, advantage_3_continue_kb, \
     advantage_5_kb
 
-from image_files.images_paths import path_to_welcome_img, path_to_advantage_2, path_to_advantage_1_my_profile, \
-    path_to_advantage_1_accept, path_to_advantage_3, path_to_advantage_2_details, path_to_advantage_3_details, \
-    path_to_advantage_4
+from image_files.images_paths import path_to_welcome_img, path_to_advantage_official_income, path_to_advantage_official_income_details, \
+    path_to_advantage_income_without_investment, path_to_advantage_cooperation_bank, path_to_advantage_income_without_investment_details, path_to_advantage_cooperation_bank_details, \
+    path_to_advantage_unlimited_income
 
 router = Router()
 
@@ -24,7 +24,7 @@ async def cmd_start(message: Message) -> None:
 
 @router.callback_query(lambda c: c.data == 'yes')
 async def welcome_handler_if_yes(callback_query: types.CallbackQuery) -> None:
-    revenue_img = FSInputFile(path_to_advantage_2)
+    revenue_img = FSInputFile(path_to_advantage_official_income)
 
     await callback_query.message.answer(text='Добро пожаловать в проект «Свой в Альфе», '
                                              'посмотри на преимущества участия в нашем проекте!')
@@ -39,7 +39,7 @@ async def welcome_handler_if_yes(callback_query: types.CallbackQuery) -> None:
 
 @router.callback_query(lambda c: c.data == 'no')
 async def welcome_handler_if_no(callback_query: types.CallbackQuery) -> None:
-    revenue_img = FSInputFile(path_to_advantage_2)
+    revenue_img = FSInputFile(path_to_advantage_official_income)
 
     await callback_query.message.answer(text='Прости, но я не знаю другого, ведь проект «Свой в Альфе»'
                                              'это проект от крупного российского банка, посмотри на его преимущества:')
@@ -55,7 +55,7 @@ async def welcome_handler_if_no(callback_query: types.CallbackQuery) -> None:
 
 @router.callback_query(lambda c: c.data == 'advantage_1_accept' or c.data == 'advantage_1_continue')
 async def advantage_1_accept_handler(callback_query: types.CallbackQuery) -> None:
-    photo = FSInputFile(path_to_advantage_1_accept)
+    photo = FSInputFile(path_to_advantage_income_without_investment)
 
     await callback_query.message.answer_photo(photo=photo, reply_markup=advantage_2_kb(), caption='''Доход без вложений. 
     Проект «Свой в Альфе» это бизнес-модель, которая дает возможность любому гражданину РФ без первоначального 
@@ -66,7 +66,7 @@ async def advantage_1_accept_handler(callback_query: types.CallbackQuery) -> Non
 
 @router.callback_query(lambda c: c.data == 'advantage_1_details')
 async def advantage_1_details_handler(callback_query: types.CallbackQuery) -> None:
-    photo = FSInputFile(path_to_advantage_1_my_profile)
+    photo = FSInputFile(path_to_advantage_official_income_details)
 
     await callback_query.message.answer_photo(photo=photo, caption='''Ты можешь 
     самостоятельно выбрать форму сотрудничества: Самозанятый. Простая и быстрая регистрация через приложение банка, 
@@ -77,13 +77,7 @@ async def advantage_1_details_handler(callback_query: types.CallbackQuery) -> No
     пенсионных выплат.''')
 
     await callback_query.message.answer(text='''
-     Дает возможность заниматься предпринимательской деятельностью без образования юридического 
-    лица. Заплати налоги и спи спокойно. Индивидуальный предприниматель. Если вы уже ИП просто предоставьте справку 
-    что вы работаете по УСН и начинайте сотрудничество с банком. Простая регистрация, быстрый и простой вывод денег. 
-    Физическое лицо, вам достаточно предоставить паспорт, инн и снилс и ваша форма сотрудничества подтверждена. 
-    Обратите внимание по физическому лицу необходимо оплатить налог 13% . Можно совмещать разные виды деятельности. 
-    Можно работать с 18 лет. Сотрудничество с проектом «Свой в Альфе» дает возможность студентам пройти практику и 
-    получить свой первый доход. 
+    Дает возможность заниматься предпринимательской деятельностью без образования юридического лица. Заплати налоги и спи спокойно. Индивидуальный предприниматель. Если вы уже ИП просто предоставьте справку что вы работаете по УСН и начинайте сотрудничество с банком. Простая регистрация, быстрый и простой вывод денег. Физическое лицо, вам достаточно предоставить паспорт, инн и снилс и ваша форма сотрудничества подтверждена. Обратите внимание по физическому лицу необходимо оплатить налог 13% . Можно совмещать разные виды деятельности. Можно работать с 18 лет. Сотрудничество с проектом «Свой в Альфе» дает возможность студентам пройти практику и получить свой первый доход.
     ''', reply_markup=advantage_1_continue_kb())
 
     await callback_query.answer()
@@ -91,7 +85,7 @@ async def advantage_1_details_handler(callback_query: types.CallbackQuery) -> No
 
 @router.callback_query(lambda c: c.data == 'advantage_2_accept' or c.data == 'advantage_2_continue')
 async def advantage_2_accept_handler(callback_query: types.CallbackQuery) -> None:
-    photo = FSInputFile(path_to_advantage_3)
+    photo = FSInputFile(path_to_advantage_cooperation_bank)
 
     await callback_query.message.answer_photo(photo=photo, reply_markup=advantage_3_kb(), caption='''Сотрудничество с 
     крупным российским банком. Проект «Свой в Альфе» это маркетинговый проект от крупного российского банка, 
@@ -102,7 +96,7 @@ async def advantage_2_accept_handler(callback_query: types.CallbackQuery) -> Non
 
 @router.callback_query(lambda c: c.data == 'advantage_2_details')
 async def advantage_2_details_handler(callback_query: types.CallbackQuery) -> None:
-    photo = FSInputFile(path_to_advantage_2_details)
+    photo = FSInputFile(path_to_advantage_income_without_investment_details)
 
     await callback_query.message.answer_photo(photo=photo, reply_markup=advantage_2_continue_kb(), caption='''Можно 
     зарабатывать без финансовых вложений и риска потерять деньги, ты приобретаешь финансовую независимость, 
@@ -112,7 +106,7 @@ async def advantage_2_details_handler(callback_query: types.CallbackQuery) -> No
 
 @router.callback_query(lambda c: c.data == 'advantage_3_accept' or c.data == 'advantage_3_continue')
 async def advantage_3_accept_handler(callback_query: types.CallbackQuery) -> None:
-    photo = FSInputFile(path_to_advantage_4)
+    photo = FSInputFile(path_to_advantage_unlimited_income)
 
     await callback_query.message.answer_photo(photo=photo, reply_markup=advantage_4_kb(), caption='''Неограниченный 
     доход. Проект предоставляет возможность получать почти неограниченный доход, что  сложно достичь просто работая 
@@ -123,7 +117,7 @@ async def advantage_3_accept_handler(callback_query: types.CallbackQuery) -> Non
 
 @router.callback_query(lambda c: c.data == 'advantage_3_details')
 async def advantage_3_details_handler(callback_query: types.CallbackQuery) -> None:
-    photo = FSInputFile(path_to_advantage_3_details)
+    photo = FSInputFile(path_to_advantage_cooperation_bank_details)
 
     await callback_query.message.answer_photo(photo=photo, reply_markup=advantage_3_continue_kb(), caption='''Проект 
     "Свой в Альфе" сотрудничает с  крупнейшим банком России занимающий 4-ое место по размеру активов: 8,79 триллионов 
@@ -133,7 +127,7 @@ async def advantage_3_details_handler(callback_query: types.CallbackQuery) -> No
 
 @router.callback_query(lambda c: c.data == 'advantage_4_accept' or c.data == 'advantage_4_continue')
 async def advantage_4_accept_handler(callback_query: types.CallbackQuery) -> None:
-    photo = FSInputFile(path_to_advantage_4)
+    photo = FSInputFile(path_to_advantage_unlimited_income)
 
     await callback_query.message.answer_photo(photo=photo, reply_markup=advantage_5_kb(), caption='''Неограниченный 
     доход. Проект предоставляет возможность получать почти неограниченный доход, что  сложно достичь просто работая 
@@ -144,7 +138,7 @@ async def advantage_4_accept_handler(callback_query: types.CallbackQuery) -> Non
 
 @router.callback_query(lambda c: c.data == 'advantage_4_details')
 async def advantage_4_details_handler(callback_query: types.CallbackQuery) -> None:
-    photo = FSInputFile(path_to_advantage_3_details)
+    photo = FSInputFile(path_to_advantage_cooperation_bank_details)
 
     await callback_query.message.answer_photo(photo=photo, reply_markup=advantage_4_continue_kb(), caption='''Проект 
     "Свой в Альфе" сотрудничает с  крупнейшим банком России занимающий 4-ое место по размеру активов: 8,79 триллионов 
