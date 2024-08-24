@@ -90,3 +90,12 @@ path_to_cashback_and_sales = os.path.join(ROOT_PATH_TO_IMG, 'cashback_and_sales.
 
 # Путь до png со скрином о том как заработать 50к
 path_to_how_to_make_50k = os.path.join(ROOT_PATH_TO_IMG, 'how_to_make_50k.png')
+
+
+# Путь до png с ai картинкам мужчин
+path_to_ai_gen_man_1 = os.path.join(ROOT_PATH_TO_IMG, 'ai_gen_man_1.png')
+path_to_ai_gen_man_2 = os.path.join(ROOT_PATH_TO_IMG, 'ai_gen_man_2.png')
+
+
+# Путь до png со скрином о том как заработать 50к
+path_to_own_at_alpha = os.path.join(ROOT_PATH_TO_IMG, 'own_at_alpha.png')
