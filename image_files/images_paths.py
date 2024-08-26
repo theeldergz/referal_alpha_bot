@@ -62,8 +62,8 @@ path_to_advantage_new_profession_details = os.path.join(ROOT_PATH_TO_IMG, 'advan
 
 
 # Путь до png с информацией и хуком о том "как заработать 10к"
-path_to_hook_how_to_make_10k = os.path.join(ROOT_PATH_TO_IMG, 'hook_how_to_make_10k.png')
-path_to_info_how_to_make_10k = os.path.join(ROOT_PATH_TO_IMG, 'info_how_to_make_10k.png')
+path_to_how_to_make_10k = os.path.join(ROOT_PATH_TO_IMG, 'how_to_make_10k.png')
+path_to_how_to_make_10k_details = os.path.join(ROOT_PATH_TO_IMG, 'how_to_make_10k_details.png')
 
 
 # Путь до png по заказу карты

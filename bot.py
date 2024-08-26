@@ -4,7 +4,8 @@ import logging
 from aiogram import Bot, Dispatcher
 from dotenv import load_dotenv, find_dotenv
 
-from handlers import message_routes
+# from handlers import message_routes
+from handlers import message_routes_test
 
 
 # Запуск бота
@@ -14,10 +15,8 @@ async def main():
     logging.basicConfig(level=logging.INFO)
     bot = Bot(token=BOT_TOKEN)
     dp = Dispatcher()
-    dp.include_routers(message_routes.router)
-    # Альтернативный вариант регистрации роутеров по одному на строку
-    # dp.include_router(questions.router)
-    # dp.include_router(different_types.router)
+    # dp.include_routers(message_routes.router)
+    dp.include_routers(message_routes_test.router)
 
     # Запускаем бота и пропускаем все накопленные входящие
     # Да, этот метод можно вызвать даже если у вас поллинг

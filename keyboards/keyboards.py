@@ -27,13 +27,17 @@ def welcome_yes_no_kb() -> InlineKeyboardMarkup:
     return kb.as_markup()
 
 
-def make_accept_details_kb(advantage_name: str) -> InlineKeyboardMarkup:
+def make_accept_details_kb(next_advantage_name: str,
+                           current_advantage_details_name: str = None,
+                           first_key_text: str = 'Понятно',
+                           second_key_text: str = 'Подробнее') -> InlineKeyboardMarkup:
+
     kb = InlineKeyboardBuilder()
     kb.row(types.InlineKeyboardButton(
-        text='Понятно', callback_data=f'advantage_{advantage_name}_accept')
+        text=first_key_text, callback_data=f'advantage_{next_advantage_name}_accept')
     )
     kb.row(types.InlineKeyboardButton(
-        text='Подробнее', callback_data=f'advantage_{advantage_name}_details')
+        text=second_key_text, callback_data=f'advantage_{current_advantage_details_name}_details')
     )
     kb.adjust(2)
 
