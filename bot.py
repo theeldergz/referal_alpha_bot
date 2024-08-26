@@ -3,9 +3,7 @@ import asyncio
 import logging
 from aiogram import Bot, Dispatcher
 from dotenv import load_dotenv, find_dotenv
-
-# from handlers import message_routes
-from handlers import message_routes_test
+from handlers import message_routes
 
 
 # Запуск бота
@@ -15,11 +13,8 @@ async def main():
     logging.basicConfig(level=logging.INFO)
     bot = Bot(token=BOT_TOKEN)
     dp = Dispatcher()
-    # dp.include_routers(message_routes.router)
-    dp.include_routers(message_routes_test.router)
+    dp.include_routers(message_routes.router)
 
-    # Запускаем бота и пропускаем все накопленные входящие
-    # Да, этот метод можно вызвать даже если у вас поллинг
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 
