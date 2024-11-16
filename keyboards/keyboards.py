@@ -78,7 +78,7 @@ def make_become_partner_kb() -> InlineKeyboardMarkup:
     """
     kb = InlineKeyboardBuilder()
     kb.row(types.InlineKeyboardButton(
-        text='Стать партнером', callback_data=f'become_partner')
+        text='Стать партнером!', callback_data=f'become_partner')
     )
     return kb.as_markup()
 
@@ -89,12 +89,11 @@ def make_card_order_kb() -> InlineKeyboardMarkup:
     """
     kb = InlineKeyboardBuilder()
     kb.row(types.InlineKeyboardButton(
-        text='Стать партнером', callback_data=f'become_partner')
+        text='Как получить 500 р. за карту?', callback_data=f'i_order_card')
     )
     kb.row(types.InlineKeyboardButton(
-        text='Написать наставнику', callback_data=f'call_mentor')
+        text='Стать партнером и получить 50.000 р.', callback_data=f'become_partner')
     )
-    kb.adjust(2)
 
     return kb.as_markup()
 
@@ -105,7 +104,7 @@ def make_register_kb() -> InlineKeyboardMarkup:
     """
     kb = InlineKeyboardBuilder()
     kb.row(types.InlineKeyboardButton(
-        text='Я зарегистрировался', callback_data=f'register_complete')
+        text='Я зарегистрировался', callback_data=f'how_to_make_50k')
     )
 
     return kb.as_markup()
@@ -141,13 +140,74 @@ def make_common_continue_kb(next_handler_name: str, key_text: str) -> InlineKeyb
     return kb.as_markup()
 
 
-def make_card_order_after_test_kb() -> InlineKeyboardMarkup:
+def make_info_after_test_kb() -> InlineKeyboardMarkup:
     """
     Клавиатура отвечает за кнопку подтверждения регистрации
     """
     kb = InlineKeyboardBuilder()
     kb.row(types.InlineKeyboardButton(
-        text='Закажи карту, на которую будет приходить твой доход', callback_data=f'card_order_info')
+        text='Написать наставнику', callback_data=f'mentor_details')
+    )
+    kb.row(types.InlineKeyboardButton(
+        text='Подробнее', callback_data=f'info_after_test_details')
+    )
+
+    return kb.as_markup()
+
+
+def make_check_partner_or_no_kb() -> InlineKeyboardMarkup:
+    """
+    Клавиатура отвечает за кнопки "да" и "нет" в блоке с вопросом о том является ли пользователь партнером банка
+    """
+    kb = InlineKeyboardBuilder()
+    kb.row(types.InlineKeyboardButton(
+        text='ДА', callback_data=f'check_partner_yes')
+    )
+    kb.row(types.InlineKeyboardButton(
+        text='НЕТ', callback_data=f'check_partner_no')
+    )
+    kb.adjust(2)
+
+    return kb.as_markup()
+
+
+def make_partner_url_kb() -> InlineKeyboardMarkup:
+    """
+    Клавиатура отвечает за кнопку "Я оформил карту"
+    """
+    kb = InlineKeyboardBuilder()
+    kb.row(types.InlineKeyboardButton(
+        text='Я оформил карту', callback_data=f'get_url')
+    )
+
+    return kb.as_markup()
+
+
+def make_call_mentor_kb() -> InlineKeyboardMarkup:
+    """
+    Клавиатура отвечает за кнопку вызова наставника
+    """
+    kb = InlineKeyboardBuilder()
+    kb.row(types.InlineKeyboardButton(
+        text='Написать наставнику', callback_data=f'call_mentor')
+    )
+
+    return kb.as_markup()
+
+
+def make_study_in_personal_acc_triple_kb() -> InlineKeyboardMarkup:
+    """
+    Клавиатура отвечает за три кнопки в блоке об обучении в ЛК
+    """
+    kb = InlineKeyboardBuilder()
+    kb.row(types.InlineKeyboardButton(
+        text='Карта куда будет приходить твой доход', callback_data=f'debit_card_order_info')
+    )
+    kb.row(types.InlineKeyboardButton(
+        text='Написать наставнику', callback_data=f'mentor_details')
+    )
+    kb.row(types.InlineKeyboardButton(
+        text='Ответы на тест', callback_data=f'answers_test')
     )
 
     return kb.as_markup()
@@ -159,7 +219,7 @@ def make_i_order_card_kb() -> InlineKeyboardMarkup:
     """
     kb = InlineKeyboardBuilder()
     kb.row(types.InlineKeyboardButton(
-        text='Я заказал', callback_data=f'i_order_card')
+        text='Я заказал', callback_data=f'mentor_details')
     )
 
     return kb.as_markup()
